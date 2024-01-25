@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/users")
 public class UserController {
 
-    private UserService userService;
+    private final UserService userService;
 
     @Autowired
     public UserController(UserService userService) {
@@ -27,11 +27,6 @@ public class UserController {
     @GetMapping("/{idUser}")
     public ResponseEntity<User> getUserById(@PathVariable Integer idUser){
         return ResponseEntity.ok().body(userService.getUserById(idUser));
-    }
-    //POST запросы-----------------------------------------------------------
-    @PostMapping("")
-    public ResponseEntity<User> createUser(@RequestBody User user){
-        return ResponseEntity.ok().body(userService.createUser(user));
     }
     //PUT запросы-----------------------------------------------------------
     @PutMapping("")

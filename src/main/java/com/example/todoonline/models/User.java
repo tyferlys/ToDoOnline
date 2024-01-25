@@ -1,5 +1,6 @@
 package com.example.todoonline.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
 import jakarta.persistence.*;
@@ -34,6 +35,18 @@ public class User {
 
     @Column(name = "description")
     private String description;
+
+    @JsonIgnore
+    @Column(name = "authcode")
+    private String authCode;
+
+    public String getAuthCode() {
+        return authCode;
+    }
+
+    public void setAuthCode(String authCode) {
+        this.authCode = authCode;
+    }
 
     public Integer getId() {
         return id;
